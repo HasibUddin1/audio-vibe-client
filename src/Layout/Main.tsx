@@ -1,16 +1,19 @@
 import { Outlet } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar/NavigationBar";
+import { Row, Col } from "react-bootstrap";
 
 
 const Main = () => {
     return (
         <div>
-            <div className="grid">
-                <NavigationBar></NavigationBar>
-                <div className="d-flex align-items-end justify-content-end w-50 mx-auto">
+            <Row className="g-0">
+                <Col lg={3} className="p-0">
+                    <NavigationBar></NavigationBar>
+                </Col>
+                <Col lg={9} className="p-0">
                     <Outlet></Outlet>
-                </div>
-            </div>
+                </Col>
+            </Row>
         </div>
     );
 };

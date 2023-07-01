@@ -1,9 +1,9 @@
-
+import bannerImage from '../../assets/images/banner-image.jpg'
 
 const Home = () => {
     return (
         <div>
-            <h1>This is Home component</h1>
+            <img className='w-100' src={bannerImage} alt="" />
         </div>
     );
 };
