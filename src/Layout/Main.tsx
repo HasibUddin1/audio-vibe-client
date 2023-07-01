@@ -7,10 +7,10 @@ const Main = () => {
     return (
         <div>
             <Row className="g-0">
-                <Col lg={3} className="p-0">
+                <Col lg={2} className="p-0">
                     <NavigationBar></NavigationBar>
                 </Col>
-                <Col lg={9} className="p-0">
+                <Col lg={10} className="p-0">
                     <Outlet></Outlet>
                 </Col>
             </Row>
