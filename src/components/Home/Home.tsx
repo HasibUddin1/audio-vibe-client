@@ -29,7 +29,7 @@ const Home = () => {
                 <Fade delay={1e3} cascade damping={1e-1}>
                     <p className="text-center text-xl">Here you will see the featured musics</p>
                 </Fade>
-                <hr className='border border-2 border-secondary mx-5' />
+                <hr className='border border-4 border-secondary mx-5 rounded' />
                 <Swiper
                     slidesPerView={3}
                     spaceBetween={30}
@@ -37,7 +37,7 @@ const Home = () => {
                         clickable: true,
                     }}
                     modules={[Pagination]}
-                    className="mySwiper p-3"
+                    className="mySwiper p-3 mb-5"
                 >
                     {
                         allFeaturedMusics.map(featuredMusic => <SwiperSlide
@@ -50,15 +50,15 @@ const Home = () => {
                     }
                 </Swiper>
             </div>
-            <div className='mt-3'>
+            {/* <div className='mt-3'>
                 <Slide>
                     <h3 className="text-center fw-bold">Your Favorite Playlist</h3>
                 </Slide>
                 <Fade delay={1e3} cascade damping={1e-1}>
                     <p className="text-center text-xl">Here you will see your favorite musics</p>
                 </Fade>
-                <hr className='border border-2 border-secondary mx-5' />
-            </div>
+                <hr className='border border-4 border-secondary mx-5 rounded' />
+            </div> */}
         </div>
     );
 };
