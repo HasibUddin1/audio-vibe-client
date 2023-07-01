@@ -2,8 +2,9 @@
 
 const Search = () => {
     return (
-        <div>
-            <h1>This is Search Component</h1>
+        <div className="d-flex mt-5 w-100 justify-content-center">
+             <input className="form-control" type="search" placeholder="Search" aria-label="Search" />
+             <button className="btn btn-outline-success" type="submit">Search</button>
         </div>
     );
 };

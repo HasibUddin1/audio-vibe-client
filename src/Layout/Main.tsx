@@ -5,8 +5,12 @@ import NavigationBar from "../components/NavigationBar/NavigationBar";
 const Main = () => {
     return (
         <div>
-            <NavigationBar></NavigationBar>
-            <Outlet></Outlet>
+            <div className="grid">
+                <NavigationBar></NavigationBar>
+                <div className="d-flex align-items-end justify-content-end w-50 mx-auto">
+                    <Outlet></Outlet>
+                </div>
+            </div>
         </div>
     );
 };
