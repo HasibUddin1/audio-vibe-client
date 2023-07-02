@@ -8,7 +8,7 @@ const NavigationBar = () => {
     // TODO: Implementation of React Icons
 
     return (
-        <div className="bg-primary d-flex flex-column h-100 justify-content-center align-items-center gap-3 border border-primary navigation-container">
+        <div className="bg-primary d-flex flex-column h-100 pt-5 align-items-center gap-3 border border-primary navigation-container">
             <NavLink
                 to='/'
                 className={({ isActive }) =>
