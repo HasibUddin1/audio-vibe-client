@@ -1,4 +1,5 @@
 import './SingleMusic.css'
+import { MdFavorite, MdPlaylistAddCircle } from "react-icons/md";
 
 const SingleMusic = ({ music }) => {
     // console.log(featuredMusic)
@@ -16,7 +17,8 @@ const SingleMusic = ({ music }) => {
                         <p className="card-text"><small className="text-body-secondary">Released Year: {music.year}</small></p>
                     </div>
                     <div className='text-end'>
-                        <button className='btn btn-primary'>Add To Favorites</button>
+                        <button className='btn fs-2 text-secondary'><MdPlaylistAddCircle></MdPlaylistAddCircle></button>
+                        <button className='btn fs-2 text-danger'><MdFavorite></MdFavorite></button>
                     </div>
                 </div>
             </div>

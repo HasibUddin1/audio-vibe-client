@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SingleMusic from "../SingleMusic/SingleMusic";
 import './Search.css'
+import { Slide } from "react-awesome-reveal";
 
 
 const Search = () => {
@@ -27,16 +28,26 @@ const Search = () => {
                 .then(data => setAllMusic(data))
         }
         else {
-            fetch('http://localhost:5000/allMusic')
+            fetch('http://localhost:5000/allMusicOnSearchDefault')
                 .then(res => res.json())
                 .then(data => setAllMusic(data))
         }
     }, [searchText])
     // console.log(showMusic)
 
+    const handleShowMore = () => {
+        // load all music
+        fetch('http://localhost:5000/allMusic')
+            .then(res => res.json())
+            .then(data => setAllMusic(data))
+    }
+
     return (
-        <div className="">
-            <div className="d-flex mt-5 justify-content-center mx-auto">
+        <div>
+            <Slide>
+                <h3 className="text-center fw-bold mt-3">Search Your Favorite Music</h3>
+            </Slide>
+            <div className="d-flex mt-3 justify-content-center mx-auto">
                 <input onChange={(event) => setSearchText(event.target.value)} className="form-control w-75" type="search" placeholder="Search" aria-label="Search" />
             </div>
             <div className="all-music-container p-2 mt-5 overflow-hidden">
@@ -46,6 +57,13 @@ const Search = () => {
                         music={music}
                     ></SingleMusic>)
                 }
+            </div>
+            <div className="text-center">
+                <button onClick={handleShowMore} className={
+                    allMusic.length > 10 ?
+                    "d-none" :
+                    "btn btn-primary"
+                }>Show More</button>
             </div>
         </div>
     );
