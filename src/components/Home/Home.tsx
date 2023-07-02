@@ -11,12 +11,12 @@ import { Slide, Fade } from 'react-awesome-reveal';
 
 const Home = () => {
 
-    const [allFeaturedMusics, setAllFeaturedMusics] = useState([])
+    const [allFeaturedMusic, setAllFeaturedMusic] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:5000/allMusicFeatured')
             .then(res => res.json())
-            .then(data => setAllFeaturedMusics(data))
+            .then(data => setAllFeaturedMusic(data))
     }, [])
 
     return (
@@ -24,10 +24,10 @@ const Home = () => {
             <img className='w-100' src={bannerImage} alt="" />
             <div>
                 <Slide>
-                    <h3 className="text-center fw-bold mt-3">Featured Musics</h3>
+                    <h3 className="text-center fw-bold mt-3">Featured Music</h3>
                 </Slide>
                 <Fade delay={1e3} cascade damping={1e-1}>
-                    <p className="text-center text-xl">Here you will see the featured musics</p>
+                    <p className="text-center text-xl">Here you will see the featured music</p>
                 </Fade>
                 <hr className='border border-4 border-secondary mx-5 rounded' />
                 <Swiper
@@ -40,11 +40,11 @@ const Home = () => {
                     className="mySwiper p-3 mb-5"
                 >
                     {
-                        allFeaturedMusics.map(featuredMusic => <SwiperSlide
-                            key={featuredMusic._id}
+                        allFeaturedMusic.map(music => <SwiperSlide
+                            key={music._id}
                         >
                             <SingleMusic
-                                featuredMusic={featuredMusic}
+                                music={music}
                             ></SingleMusic>
                         </SwiperSlide>)
                     }
@@ -55,7 +55,7 @@ const Home = () => {
                     <h3 className="text-center fw-bold">Your Favorite Playlist</h3>
                 </Slide>
                 <Fade delay={1e3} cascade damping={1e-1}>
-                    <p className="text-center text-xl">Here you will see your favorite musics</p>
+                    <p className="text-center text-xl">Here you will see your favorite music</p>
                 </Fade>
                 <hr className='border border-4 border-secondary mx-5 rounded' />
             </div> */}
