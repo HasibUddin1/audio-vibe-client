@@ -8,16 +8,22 @@ import "swiper/css";
 import "swiper/css/pagination";
 import SingleMusic from '../SingleMusic/SingleMusic';
 import { Slide, Fade } from 'react-awesome-reveal';
+import { useDispatch, useSelector } from 'react-redux';
+import getAllMusic from '../../reduxServices/actions/allMusicActions';
 
 const Home = () => {
 
-    const [allFeaturedMusic, setAllFeaturedMusic] = useState([])
+    const { allMusic } = useSelector(state => state)
+
+    // TODO: Authentication is required for user in order to view all the information of this website
+
+    // const [allFeaturedMusic, setAllFeaturedMusic] = useState([])
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        fetch('http://localhost:5000/allMusicFeatured')
-            .then(res => res.json())
-            .then(data => setAllFeaturedMusic(data))
-    }, [])
+        dispatch(getAllMusic())
+    }, [dispatch])
 
     return (
         <div>
@@ -40,7 +46,7 @@ const Home = () => {
                     className="mySwiper p-3 mb-5"
                 >
                     {
-                        allFeaturedMusic.map(music => <SwiperSlide
+                        allMusic.map(music => <SwiperSlide
                             key={music._id}
                         >
                             <SingleMusic

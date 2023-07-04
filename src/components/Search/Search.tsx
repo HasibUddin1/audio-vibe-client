@@ -40,6 +40,9 @@ const Search = () => {
         fetch('http://localhost:5000/allMusic')
             .then(res => res.json())
             .then(data => setAllMusic(data))
+
+            const showMoreButton = document.getElementById("show-more-btn")
+            showMoreButton?.classList.add("d-none")
     }
 
     return (
@@ -59,11 +62,7 @@ const Search = () => {
                 }
             </div>
             <div className="text-center">
-                <button onClick={handleShowMore} className={
-                    allMusic.length > 10 ?
-                    "d-none" :
-                    "btn btn-primary"
-                }>Show More</button>
+                <button id="show-more-btn" onClick={handleShowMore} className="btn btn-primary">Show More</button>
             </div>
         </div>
     );
