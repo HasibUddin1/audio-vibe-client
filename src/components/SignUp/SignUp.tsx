@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
 
@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 const SignUp = () => {
 
     const { createUser, updateUsersProfile } = useContext(AuthContext)
+
+    const [error, setError] = useState('')
 
     const handleSignUp = (event: Record<string, any>) => {
         event.preventDefault()
@@ -16,25 +18,43 @@ const SignUp = () => {
         const email = form.email.value
         const password = form.password.value
 
+        if (!name) {
+            setError('Name field is required')
+            return
+        }
+
+        if (!email) {
+            setError('Email field is required')
+            return
+        }
+
+        if (!password) {
+            setError('Password field is required')
+            return
+        }
+
+        setError('')
+
         createUser(email, password)
-        .then((result: Record<string, any>) => {
-            const registeredUser = result.user
-            updateUsersProfile(registeredUser, name)
-            .then(() => {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Do you want to continue',
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                  })
+            .then((result: Record<string, any>) => {
+                const registeredUser = result.user
+                updateUsersProfile(registeredUser, name)
+                    .then(() => {
+                        Swal.fire({
+                            title: 'Success',
+                            text: 'Do you want to continue',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        })
+                        setError('')
+                    })
+                    .catch((error: Record<string, any>) => {
+                        console.log(error)
+                    })
             })
             .catch((error: Record<string, any>) => {
                 console.log(error)
             })
-        })
-        .catch((error: Record<string, any>) => {
-            console.log(error)
-        })
     }
 
     return (
@@ -54,6 +74,7 @@ const SignUp = () => {
                     <Link className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" to='/login'>Already have an account?</Link>
                 </div>
                 <input className="btn btn-primary" type="submit" value="Sign Up" />
+                {error && <p className="text-danger">{error}</p>}
             </form>
         </div>
     );
