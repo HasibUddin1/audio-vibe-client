@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import './NavigationBar.css'
-import { FaHome, FaSearch } from "react-icons/fa";
+import { FaHome, FaSearch, FaUser } from "react-icons/fa";
 import { MdFavorite, MdPlaylistAddCircle } from "react-icons/md";
 
 const NavigationBar = () => {
@@ -48,6 +48,16 @@ const NavigationBar = () => {
                 }
             >
                <MdPlaylistAddCircle></MdPlaylistAddCircle> Playlists
+            </NavLink>
+            <NavLink
+                to='/login'
+                className={({ isActive }) =>
+                    isActive
+                        ? "bg-secondary-subtle p-2 text-black fw-bold nav-link rounded fs-5 d-flex align-items-center gap-2"
+                        : "text-white fw-bold nav-link fs-5 d-flex align-items-center gap-2"
+                }
+            >
+               <FaUser></FaUser> Login
             </NavLink>
         </div>
     );
