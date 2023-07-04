@@ -15,10 +15,6 @@ const Home = () => {
 
     const { allMusic } = useSelector((state: Record<string, any>) => state.allMusic)
 
-    // TODO: Authentication is required for user in order to view all the information of this website
-
-    // const [allFeaturedMusic, setAllFeaturedMusic] = useState([])
-
     const dispatch = useDispatch()
 
     useEffect(() => {

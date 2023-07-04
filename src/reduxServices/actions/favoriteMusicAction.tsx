@@ -9,7 +9,7 @@ const getAllFavoriteMusic = () => async (dispatch) => {
     const { user } = useContext(AuthContext)
     dispatch({ type: GET_ALL_FAVORITE_MUSIC })
     try {
-        fetch(`http://localhost:5000/allMusicFeatured/${user?.email}`)
+        fetch(`http://localhost:5000/favoriteMusicByUser/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 dispatch({ type: GET_ALL_FAVORITE_MUSIC_SUCCESS, payload: data })
