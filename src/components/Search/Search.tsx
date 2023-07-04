@@ -16,19 +16,19 @@ const Search = () => {
 
     // const handleSearch = () => {
     //     // implement searching
-    //     fetch(`http://localhost:5000/getMusicByTitle/${searchText}`)
+    //     fetch(`https://audio-vibe-server.vercel.app/getMusicByTitle/${searchText}`)
     //     .then(res => res.json())
     //     .then(data => console.log(data))
     // }
 
     useEffect(() => {
         if (searchText) {
-            fetch(`http://localhost:5000/getMusicByTitle/${searchText}`)
+            fetch(`https://audio-vibe-server.vercel.app/getMusicByTitle/${searchText}`)
                 .then(res => res.json())
                 .then(data => setAllMusic(data))
         }
         else {
-            fetch('http://localhost:5000/allMusicOnSearchDefault')
+            fetch('https://audio-vibe-server.vercel.app/allMusicOnSearchDefault')
                 .then(res => res.json())
                 .then(data => setAllMusic(data))
         }
@@ -37,7 +37,7 @@ const Search = () => {
 
     const handleShowMore = () => {
         // load all music
-        fetch('http://localhost:5000/allMusic')
+        fetch('https://audio-vibe-server.vercel.app/allMusic')
             .then(res => res.json())
             .then(data => setAllMusic(data))
 
