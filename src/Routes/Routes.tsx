@@ -6,6 +6,7 @@ import Favorites from "../components/Favorites/Favorites";
 import Playlists from "../components/Playlists/Playlists";
 import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
       children: [
         {
           path: '/',
-          element: <Home></Home>
+          element: <PrivateRoute><Home></Home></PrivateRoute>
         },
         {
           path: 'search',

@@ -42,7 +42,7 @@ const SignUp = () => {
                     .then(() => {
                         Swal.fire({
                             title: 'Success',
-                            text: 'Do you want to continue',
+                            text: 'You have successfully created an account',
                             icon: 'success',
                             confirmButtonText: 'Ok'
                         })

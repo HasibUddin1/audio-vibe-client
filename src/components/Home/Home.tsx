@@ -13,7 +13,7 @@ import getAllMusic from '../../reduxServices/actions/allMusicActions';
 
 const Home = () => {
 
-    const { allMusic } = useSelector(state => state)
+    const allMusic = useSelector(state => state.allMusic)
 
     // TODO: Authentication is required for user in order to view all the information of this website
 

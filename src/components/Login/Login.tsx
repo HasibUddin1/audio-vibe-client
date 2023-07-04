@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
 
     const { signIn } = useContext(AuthContext)
 
-    const handleLogin = event => {
+    const handleLogin = (event: Record<string, any>) => {
         event.preventDefault()
 
         const form = event.target
@@ -15,11 +16,17 @@ const Login = () => {
         const password = form.password.value
 
         signIn(email, password)
-            .then(result => {
+            .then((result: Record<string, any>) => {
                 const loggedUser = result.user
                 console.log(loggedUser)
+                Swal.fire({
+                    title: 'Success',
+                    text: 'You have successfully logged in',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
             })
-            .catch(error => {
+            .catch((error: Record<string, any>) => {
                 console.log(error)
             })
     }
