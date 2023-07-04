@@ -8,13 +8,16 @@ import router from './Routes/Routes.tsx';
 import { Provider } from 'react-redux'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.css';
+import AuthProviders from './providers/AuthProviders.tsx';
 
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <AuthProviders>
+        <RouterProvider router={router} />
+      </AuthProviders>
     </Provider>
   </React.StrictMode>,
 )

@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
 
-    const handleSignUp = event => {
+    const { createUser, updateUsersProfile } = useContext(AuthContext)
+
+    const handleSignUp = (event: Record<string, any>) => {
         event.preventDefault()
 
         const form = event.target
@@ -11,7 +16,25 @@ const SignUp = () => {
         const email = form.email.value
         const password = form.password.value
 
-        console.log(name, email, password)
+        createUser(email, password)
+        .then((result: Record<string, any>) => {
+            const registeredUser = result.user
+            updateUsersProfile(registeredUser, name)
+            .then(() => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Do you want to continue',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
+            })
+            .catch((error: Record<string, any>) => {
+                console.log(error)
+            })
+        })
+        .catch((error: Record<string, any>) => {
+            console.log(error)
+        })
     }
 
     return (
