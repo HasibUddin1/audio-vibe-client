@@ -8,6 +8,7 @@ import router from './Routes/Routes.tsx';
 import { Provider } from 'react-redux'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthProviders from './providers/AuthProviders.tsx';
 
 
