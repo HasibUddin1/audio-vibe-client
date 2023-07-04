@@ -42,7 +42,7 @@ const Home = () => {
                     className="mySwiper p-3 mb-5"
                 >
                     {
-                        allMusic.map(music => <SwiperSlide
+                        allMusic.map((music: Record<string, any>) => <SwiperSlide
                             key={music._id}
                         >
                             <SingleMusic

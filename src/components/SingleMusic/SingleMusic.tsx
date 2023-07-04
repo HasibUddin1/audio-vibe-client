@@ -31,11 +31,21 @@ const SingleMusic = ({ music }) => {
         })
             .then(res => res.json())
             .then(data => {
+                // console.log(data)
                 if(data.insertedId){
                     Swal.fire({
                         title: 'Success',
                         text: 'This music has been added to your favorites',
                         icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+
+                if(data.message){
+                    Swal.fire({
+                        title: '',
+                        text: data.message,
+                        icon: 'error',
                         confirmButtonText: 'Ok'
                     })
                 }
