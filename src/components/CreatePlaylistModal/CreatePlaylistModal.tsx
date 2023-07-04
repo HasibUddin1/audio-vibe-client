@@ -39,14 +39,16 @@ const CreatePlaylistModal = (props: any) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             setError('')
-            Swal.fire({
-                title: '',
-                text: 'Your playlist has been created',
-                icon: 'success',
-                confirmButtonText: 'Ok'
-            })
+            if(data.insertedId){
+                Swal.fire({
+                    title: '',
+                    text: 'Your playlist has been created',
+                    icon: 'success',
+                })
+                window.location.reload()
+            }
         })
     }
 

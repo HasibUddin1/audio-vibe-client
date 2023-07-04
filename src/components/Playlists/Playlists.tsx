@@ -1,12 +1,29 @@
 import { Slide } from "react-awesome-reveal";
 import './Playlists.css'
 import { FaPlus } from "react-icons/fa";
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Button } from "react-bootstrap";
 import CreatePlaylistModal from "../CreatePlaylistModal/CreatePlaylistModal";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Playlists = () => {
     const [modalShow, setModalShow] = useState(false);
+
+    const { user } = useContext(AuthContext)
+
+    const [playlists, setPlaylists] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/getPlaylistByUser/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setPlaylists(data))
+    }, [user])
+
+    const handleCreatePlaylist = () => {
+        fetch(`http://localhost:5000/getPlaylistByUser/${user?.email}`)
+        .then(res => res.json())
+        .then(data => setPlaylists(data))
+    }
 
     return (
         <div>
@@ -24,9 +41,11 @@ const Playlists = () => {
                 </div>
             </Slide>
             <div className="w-75 mx-auto button-container mt-3">
-                <div className="text-center">
-                    <button className="btn w-50 btn-success rounded-pill fw-bold col-4">Favorites</button>
-                </div>
+                {
+                    playlists.map(playlist => <div key={playlist._id} className="text-center">
+                        <button className="btn w-50 btn-success rounded-pill fw-bold col-4">{playlist.playlistName}</button>
+                    </div>)
+                }
             </div>
         </div>
     );
