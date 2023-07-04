@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import bannerImage from '../../assets/images/banner-image-for-audio-hub.jpg'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
@@ -13,7 +13,7 @@ import getAllMusic from '../../reduxServices/actions/allMusicActions';
 
 const Home = () => {
 
-    const allMusic = useSelector(state => state.allMusic)
+    const { allMusic } = useSelector((state: Record<string, any>) => state.allMusic)
 
     // TODO: Authentication is required for user in order to view all the information of this website
 

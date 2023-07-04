@@ -6,7 +6,7 @@ const initialState = {
     error: null
 }
 
-const allMusicReducer = (state = initialState, action) => {
+const allMusicReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case GET_ALL_MUSIC:
 

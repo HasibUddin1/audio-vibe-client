@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
@@ -9,6 +9,8 @@ const SignUp = () => {
     const { createUser, updateUsersProfile } = useContext(AuthContext)
 
     const [error, setError] = useState('')
+
+    const navigate = useNavigate()
 
     const handleSignUp = (event: Record<string, any>) => {
         event.preventDefault()
@@ -47,6 +49,7 @@ const SignUp = () => {
                             confirmButtonText: 'Ok'
                         })
                         setError('')
+                        navigate('/')
                     })
                     .catch((error: Record<string, any>) => {
                         console.log(error)

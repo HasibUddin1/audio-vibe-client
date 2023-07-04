@@ -38,7 +38,7 @@ const NavigationBar = () => {
                 to='/'
                 className={({ isActive }) =>
                     isActive
-                        ? "bg-secondary-subtle p-2 text-black fw-bold nav-link rounded fs-5 d-flex align-items-center gap-2"
+                        ? "bg-secondary-subtle p-2 text-black fw-bold rounded nav-link fs-5 d-flex align-items-center gap-2"
                         : "text-white fw-bold nav-link fs-5 d-flex align-items-center gap-2"
                 }
             >
@@ -76,7 +76,7 @@ const NavigationBar = () => {
             </NavLink>
             {
                 user ?
-                <button onClick={handleLogout} type="button" className="btn btn-secondary fw-bold">Logout</button> :
+                <button onClick={handleLogout} type="button" className="btn btn-danger fw-bold fs-6">Logout</button> :
                     <NavLink
                         to='/login'
                         className={({ isActive }) =>

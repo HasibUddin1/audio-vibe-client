@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 const Login = () => {
 
     const { signIn } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
     const handleLogin = (event: Record<string, any>) => {
         event.preventDefault()
@@ -25,6 +27,7 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 })
+                navigate('/')
             })
             .catch((error: Record<string, any>) => {
                 console.log(error)

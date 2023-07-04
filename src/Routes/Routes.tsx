@@ -19,15 +19,15 @@ const router = createBrowserRouter([
         },
         {
           path: 'search',
-          element: <Search></Search>
+          element: <PrivateRoute><Search></Search></PrivateRoute>
         },
         {
           path: 'favorites',
-          element: <Favorites></Favorites>
+          element: <PrivateRoute><Favorites></Favorites></PrivateRoute>
         },
         {
           path: 'playlists',
-          element: <Playlists></Playlists>
+          element: <PrivateRoute><Playlists></Playlists></PrivateRoute>
         },
         {
           path: 'login',

@@ -1,8 +1,47 @@
 import './SingleMusic.css'
 import { MdFavorite, MdPlaylistAddCircle } from "react-icons/md";
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProviders';
+import Swal from 'sweetalert2';
 
 const SingleMusic = ({ music }) => {
-    // console.log(featuredMusic)
+
+    const { user } = useContext(AuthContext)
+
+    const handleAddToFavorite = () => {
+
+        const favoriteMusicInfo = {
+            title: music.title,
+            artist: music.artist,
+            duration: music.duration,
+            year: music.year,
+            image: music.image,
+            audio: music.audio,
+            status: music.status,
+            userName: user?.displayName,
+            userEmail: user?.email
+        }
+
+        fetch("http://localhost:5000/favoriteMusic", {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(favoriteMusicInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'This music has been added to your favorites',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+            })
+    }
+
 
     return (
         <div className="card mb-3 hover-effect">
@@ -18,7 +57,7 @@ const SingleMusic = ({ music }) => {
                     </div>
                     <div className='text-end'>
                         <button className='btn fs-2 text-secondary'><MdPlaylistAddCircle></MdPlaylistAddCircle></button>
-                        <button className='btn fs-2 text-danger'><MdFavorite></MdFavorite></button>
+                        <button onClick={handleAddToFavorite} className='btn fs-2 text-danger'><MdFavorite></MdFavorite></button>
                     </div>
                 </div>
             </div>
